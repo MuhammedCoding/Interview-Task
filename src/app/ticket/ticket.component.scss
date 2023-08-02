@@ -1,0 +1,214 @@
+@use "../sass/variables" as *;
+
+$tickets-padding: 2rem;
+$ticket-border-color: #707070;
+
+@mixin ticket-state($bg-color, $status-color, $ticket-border) {
+  background-color: $bg-color;
+  .status-text span {
+    color: $status-color;
+  }
+  &::after {
+    background-color: $ticket-border;
+  }
+}
+
+.ticket {
+  border: 1px solid $ticket-border-color;
+  position: relative;
+  transition: transform 0.4s;
+  padding-left: 28.5px;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    width: 19px;
+  }
+
+  &.running-ticket {
+    @include ticket-state(
+      $running-ticket-bg,
+      $running-status-color,
+      $running-ticket-border
+    );
+  }
+
+  &.finished-ticket {
+    @include ticket-state(
+      $finished-ticket-bg,
+      $finished-status-color,
+      $finished-ticket-border
+    );
+  }
+
+  &.queued-ticket {
+    @include ticket-state(
+      $queued-ticket-bg,
+      $queued-status-color,
+      $queued-ticket-border
+    );
+  }
+
+  &.new-ticket {
+    @include ticket-state(
+      $new-ticket-bg,
+      $new-status-color,
+      $new-ticket-border
+    );
+  }
+}
+
+.ticket ul {
+  position: relative;
+  left: -17px;
+}
+
+.ticket label,
+.ticket ul span {
+  font-size: 0.75rem;
+  color: $secondary-color;
+}
+
+.ticket span,
+.ticket li,
+.ticket .name {
+  color: $main-color;
+}
+
+.ticket li {
+  font-size: 0.6875rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -17px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: $secondary-color;
+  }
+}
+
+.ticket .id {
+  font-size: 0.625rem;
+  color: $secondary-color;
+}
+
+.info {
+  position: relative;
+}
+
+li.hidden {
+  display: none;
+}
+
+.ticket .date-text {
+  font-size: 0.875rem;
+}
+
+.ticket .name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticket .task {
+  font-size: 0.75rem;
+  color: $secondary-color;
+}
+
+.progress {
+  border-radius: 0;
+  width: 52px;
+  height: 12.5px;
+  border: 1px solid;
+
+  &.first {
+    border-color: $finished-status-color;
+    .progress-bar {
+      background-color: $finished-status-color;
+    }
+  }
+
+  &.second {
+    border-color: $running-status-color;
+    .progress-bar {
+      background-color: $running-status-color;
+    }
+  }
+
+  &.third {
+    border-color: #f57277;
+    .progress-bar {
+      background-color: #f57277;
+    }
+  }
+}
+
+.percentage {
+  font-size: 0.625rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.time-frame {
+  font-size: 0.625rem;
+  padding: 5px 12px;
+  background-color: $secondary-color;
+  color: #fff;
+}
+
+.col-xl-2 {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: 0;
+    right: 0;
+    height: 63px;
+    width: 2px;
+    background-color: $ticket-border-color;
+    display: block;
+    overflow: hidden;
+  }
+}
+
+.ticket .col-md-4:last-child::after,
+.ticket .col-sm-6:last-child::after,
+.ticket .col-sm-12:last-child::after,
+.ticket .col-xl-2:last-child::after {
+  display: none;
+}
+
+ul span {
+  position: relative;
+  left: -17px;
+}
+
+@media (max-width: 575.98px) {
+  .ticket .col-xl-2::after {
+    display: none;
+  }
+  .ticket .info {
+    border-bottom: 1px solid #707070;
+    padding-bottom: 25px;
+  }
+}
+
+@media (min-width: 575.98px) and (max-width: 1199.98px) {
+  .ticket .col-xl-2::after {
+    display: none;
+  }
+}

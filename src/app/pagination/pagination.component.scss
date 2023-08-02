@@ -1,0 +1,38 @@
+$pagination-color: #00afd8;
+$pagination-border-color: #c1c1c1;
+
+.pagination-container {
+  width: fit-content !important;
+  font-size: 0.625rem;
+  color: $pagination-color;
+  border: 1px solid $pagination-border-color;
+
+  .active {
+    background-color: $pagination-color;
+    color: #e6e6e6;
+  }
+
+  .page-btn,
+  .page-num {
+    border-right: 1px solid $pagination-border-color;
+    transition: all 0.3s;
+  }
+
+  .page-btn:last-child {
+    border: none;
+  }
+
+  .page-num {
+    padding: 7px 9px;
+  }
+
+  .page-btn {
+    padding: 7px;
+  }
+
+  .page-btn:hover,
+  .page-num:hover {
+    background-color: $pagination-color;
+    color: #e6e6e6;
+  }
+}

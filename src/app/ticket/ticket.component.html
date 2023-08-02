@@ -1,0 +1,99 @@
+<div class="row ticket fw-bold py-1 center-elem mb-2" [ngClass]="{
+                        'new-ticket': ticket?.status === 'New',
+                        'finished-ticket': ticket?.status === 'Finished',
+                        'running-ticket': ticket?.status === 'Running',
+                        'queued-ticket': ticket?.status === 'Queued'}">
+
+    <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
+        <div class="info">
+            <label for="name">Name</label>
+            <span class="d-block name" id="name">{{ticket?.name}}</span>
+            <span class="d-block id">{{ticket?.id}}</span>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
+        <div class="info d-flex align-items-center">
+            <div class="status-image overflow-hidden me-2">
+                <img [src]="getStatusImage(ticket?.status)" alt="status-icon">
+            </div>
+            <div class="status-text">
+                <label for="status">Status</label>
+                <span id="status" class="d-block fs-5">{{ticket?.status}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
+        <div class="info d-flex align-items-center">
+            <div class="date-image overflow-hidden me-3">
+                <img src="../../assets/images/date icon.svg" alt="date-icon">
+            </div>
+            <div class="date-text">
+                <label for="data" class="d-block">Creation Date</label>
+                <span class="d-inline-block me-2">{{ticket?.date?.ddmmyy}}</span>
+                <span class="d-inline-block">{{ticket?.date?.time}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
+        <div class="info">
+            <ul> <span>Selection Criteria</span>
+                <li *ngFor="let item of ticket?.selectionCriteria">
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
+        <div class="info">
+            <ul class="operations-list">
+                <ul>
+                    <span>Operations</span>
+                    <li *ngFor="let item of ticket?.operations; let i = index"
+                        [ngClass]="{'hidden': i >= 2 && !showAllOperations}">
+                        {{item}}
+                    </li>
+                    <span role="button" *ngIf="ticket!.operations.length > 2" (click)="toggleViewMore()">{{
+                        showAllOperations ? '...view-less' : '...view-more' }}</span>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
+        <div class="info">
+            <div class="row gx-0 align-items-center pb-3 pb-xl-0">
+                <div class="col-5">
+                    <span class="d-block task"> Tsk (210) </span>
+                    <div class="progress first mb-1 text-center position-relative" role="progressbar"
+                        aria-label="Basic example" [attr.aria-valuenow]="ticket?.progress?.firstProgress"
+                        aria-valuemin="0" aria-valuemax="210">
+                        <span class="percentage position-absolute">{{ticket?.progress?.firstProgress}}</span>
+                        <div class="progress-bar" [style.width.%]="(ticket?.progress!.firstProgress / 210) * 100">
+
+                        </div>
+                    </div>
+                    <div class="progress second mb-1 text-center position-relative" role="progressbar"
+                        aria-label="Basic example" [attr.aria-valuenow]="ticket?.progress!.secondProgress"
+                        aria-valuemin="0" aria-valuemax="210">
+                        <span class="percentage position-absolute">{{ticket?.progress!.secondProgress}}</span>
+                        <div class="progress-bar" [style.width.%]="(ticket?.progress!.secondProgress / 210) * 100">
+
+                        </div>
+                    </div>
+                    <div class="progress third mb-1 text-center position-relative" role="progressbar"
+                        aria-label="Basic example" [attr.aria-valuenow]="ticket?.progress!.thirdProgress"
+                        aria-valuemin="0" aria-valuemax="210">
+                        <span class="percentage position-absolute">{{ticket?.progress!.thirdProgress}}</span>
+                        <div class="progress-bar" [style.width.%]="(ticket?.progress!.thirdProgress / 210) * 100">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-7 d-flex">
+                    <span class="rounded-pill time-frame me-3">{{ticket?.timeFrame}}</span>
+                    <img src="../../assets/images/Arrow.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

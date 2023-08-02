@@ -1,0 +1,95 @@
+$active-color: #00afd8;
+$bg-color: #cbcbcb;
+$border-width: 1px;
+$button-padding: 8px 15px;
+$button-width: 30%;
+
+.page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  .links {
+    width: 48%;
+
+    a {
+      padding: $button-padding;
+      display: flex;
+      width: $button-width;
+      color: #ffffff;
+      background-color: $bg-color;
+      border-right: $border-width solid #ababab;
+      position: relative;
+      transition: all 0.4s;
+
+      &.active,
+      &:hover {
+        background-color: $active-color;
+        border-right-color: $active-color;
+      }
+
+      &:last-child {
+        border: none;
+        width: 40%;
+
+        &:after {
+          content: "";
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 90px 40px 0;
+          border-color: transparent #fff transparent transparent;
+          right: 0;
+          top: 0;
+          position: absolute;
+        }
+      }
+    }
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+
+    span:first-child {
+      font-size: 22px;
+      width: 33px;
+      height: 33px;
+      background-color: $active-color;
+      color: #fff;
+      border: $border-width solid $bg-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    span {
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .page-title .links {
+    width: 80%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .page-title .links a:last-child {
+    width: 70%;
+
+    &:after {
+      border-width: 0 55px 43px 0;
+    }
+  }
+  .options span:first-child {
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+  }
+
+  .page-title .links {
+    width: 90%;
+  }
+}

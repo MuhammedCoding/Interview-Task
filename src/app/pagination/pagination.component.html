@@ -1,0 +1,10 @@
+<div class="pagination center-elem py-4">
+    <div class="pagination-container text-center">
+        <a class="page-btn d-inline-block" (click)="goToPreviousPage()">Previous</a>
+        <ng-container *ngFor="let page of getPageNumbers(); let last = last">
+            <a *ngIf="page" class="page-num d-inline-block" [class.active]="currentPage === page"
+                (click)="goToPage(page)">{{page}}</a>
+        </ng-container>
+        <a class="page-btn d-inline-block" (click)="goToNextPage()">Next</a>
+    </div>
+</div>

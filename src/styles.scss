@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@use "./app/sass/gobal-rules";
+@use "./app/sass/variables";
+@use "./app/sass/functions";
+@use "./app/sass/mixins";
+
+/* some common styles*/
+
+.container-fluid {
+  padding: 0 23px;
+}
+
+.center-elem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
