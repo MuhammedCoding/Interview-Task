@@ -6,7 +6,9 @@ import { MOCK_TICKETS } from './mock-data/mock-data';
   providedIn: 'root',
 })
 export class TicketService {
-  constructor() {}
+  constructor() {
+    // test
+  }
 
   getTickets(): Ticket[] {
     return MOCK_TICKETS;
