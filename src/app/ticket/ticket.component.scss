@@ -1,7 +1,7 @@
 @use "../sass/variables" as *;
 
 $tickets-padding: 2rem;
-$ticket-border-color: #707070;
+$ticket-border-color: #ccc;
 
 @mixin ticket-state($bg-color, $status-color, $ticket-border) {
   background-color: $bg-color;
@@ -14,13 +14,17 @@ $ticket-border-color: #707070;
 }
 
 .ticket {
+  font-size: 0.75rem;
+}
+
+.ticket {
   border: 1px solid $ticket-border-color;
   position: relative;
   transition: transform 0.4s;
-  padding-left: 28.5px;
+  padding-left: 19px;
 
   &:hover {
-    transform: scale(1.02);
+    /*transform: scale(1.02);*/
   }
 
   &::after {
@@ -63,11 +67,20 @@ $ticket-border-color: #707070;
       $new-ticket-border
     );
   }
+
+  .id {
+    font-size: 0.625rem;
+    color: $secondary-color;
+  }
+
+  .info {
+    position: relative;
+  }
 }
 
 .ticket ul {
   position: relative;
-  left: -17px;
+  padding-left: 17px;
 }
 
 .ticket label,
@@ -96,15 +109,6 @@ $ticket-border-color: #707070;
     height: 12px;
     background-color: $secondary-color;
   }
-}
-
-.ticket .id {
-  font-size: 0.625rem;
-  color: $secondary-color;
-}
-
-.info {
-  position: relative;
 }
 
 li.hidden {
@@ -194,7 +198,7 @@ li.hidden {
 
 ul span {
   position: relative;
-  left: -17px;
+  padding-left: 17px;
 }
 
 @media (max-width: 575.98px) {

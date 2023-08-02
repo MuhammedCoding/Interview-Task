@@ -1,4 +1,4 @@
-<div class="row ticket fw-bold py-1 center-elem mb-2" [ngClass]="{
+<div class="row mx-0 ticket fw-bold py-1 center-elem mb-2" [ngClass]="{
                         'new-ticket': ticket?.status === 'New',
                         'finished-ticket': ticket?.status === 'Finished',
                         'running-ticket': ticket?.status === 'Running',
@@ -24,7 +24,7 @@
     </div>
     <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
         <div class="info d-flex align-items-center">
-            <div class="date-image overflow-hidden me-3">
+            <div class="date-image overflow-hidden me-2">
                 <img src="../../assets/images/date icon.svg" alt="date-icon">
             </div>
             <div class="date-text">
@@ -36,7 +36,7 @@
     </div>
     <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
         <div class="info">
-            <ul> <span>Selection Criteria</span>
+            <ul class="mb-0"> <span>Selection Criteria</span>
                 <li *ngFor="let item of ticket?.selectionCriteria">
                     {{item}}
                 </li>
@@ -45,16 +45,16 @@
     </div>
     <div class="col-12 col-sm-6 col-md-4 col-xl-2 pb-3 pb-xl-0">
         <div class="info">
-            <ul class="operations-list">
-                <ul>
-                    <span>Operations</span>
-                    <li *ngFor="let item of ticket?.operations; let i = index"
-                        [ngClass]="{'hidden': i >= 2 && !showAllOperations}">
-                        {{item}}
-                    </li>
-                    <span role="button" *ngIf="ticket!.operations.length > 2" (click)="toggleViewMore()">{{
-                        showAllOperations ? '...view-less' : '...view-more' }}</span>
-                </ul>
+            <ul class="operations-list mb-0">
+
+                <span>Operations</span>
+                <li *ngFor="let item of ticket?.operations; let i = index"
+                    [ngClass]="{'hidden': i >= 2 && !showAllOperations}">
+                    {{item}}
+                </li>
+                <span role="button" *ngIf="ticket!.operations.length > 2" (click)="toggleViewMore()">{{
+                    showAllOperations ? '...view-less' : '...view-more' }}</span>
+
             </ul>
         </div>
     </div>
@@ -89,7 +89,7 @@
 
                 </div>
                 <div class="col-7 d-flex">
-                    <span class="rounded-pill time-frame me-3">{{ticket?.timeFrame}}</span>
+                    <span class="rounded-pill time-frame me-3 text-white">{{ticket?.timeFrame}}</span>
                     <img src="../../assets/images/Arrow.svg" alt="">
                 </div>
             </div>

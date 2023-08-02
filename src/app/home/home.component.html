@@ -1,16 +1,16 @@
 <main class="pt-3">
-    <div class="container-fluid">
+    <div class="container-xxl">
 
         <app-page-title></app-page-title>
 
         <div class="tickets-container">
-            <ng-container *ngFor="let ticket of getPaginatedTickets(); let i = index">
-                <app-ticket [ticket]="ticket"></app-ticket>
+
+            <ng-container *ngFor="let ticket of getPaginatedTickets();">
+                <app-ticket class="" [ticket]="ticket"></app-ticket>
             </ng-container>
 
             <app-pagination class="mx-auto" [totalTickets]="totalTickets" [ticketsPerPage]="ticketsPerPage"
                 (pageChanged)="onPageChanged($event)"></app-pagination>
         </div>
-
     </div>
 </main>
